@@ -2,7 +2,6 @@ package url
 
 import (
 	"github.com/nekowawolf/ws-andikamf/controller"
-
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -20,4 +19,5 @@ func Web(page *fiber.App) {
 	page.Get("/checkip", controller.Homepage)
 	page.Get("/presensi", controller.GetPresensi)
 	page.Get("/presensi/:id", controller.GetPresensiID) //menampilkan data presensi berdasarkan id
+	page.Post("/insert", controller.InsertDataPresensi)
 }
