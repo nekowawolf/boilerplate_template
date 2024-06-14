@@ -3,6 +3,7 @@ package url
 import (
 	"github.com/nekowawolf/ws-andikamf/controller"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/swagger"
 )
 
 func Web(page *fiber.App) {
@@ -20,4 +21,5 @@ func Web(page *fiber.App) {
 	page.Get("/presensi", controller.GetPresensi)
 	page.Get("/presensi/:id", controller.GetPresensiID) //menampilkan data presensi berdasarkan id
 	page.Post("/insert", controller.InsertDataPresensi)
+	page.Get("/docs/*", swagger.HandlerDefault)
 }
