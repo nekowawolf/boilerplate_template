@@ -22,4 +22,8 @@ func Web(page *fiber.App) {
 	page.Get("/presensi/:id", controller.GetPresensiID) //menampilkan data presensi berdasarkan id
 	page.Post("/insert", controller.InsertDataPresensi)
 	page.Get("/docs/*", swagger.HandlerDefault)
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e91585831d7ac1285efe24e9b0fc8e09bc7ba856
