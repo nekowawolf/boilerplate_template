@@ -18,7 +18,156 @@ const docTemplate = `{
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
-    "paths": {}
+    "paths": {
+        "/presensi": {
+            "get": {
+                "description": "Mengambil semua data presensi.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Presensi"
+                ],
+                "summary": "Get All Data Presensi.",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/controller.Presensi"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "controller.JamKerja": {
+            "type": "object",
+            "properties": {
+                "durasi": {
+                    "type": "integer",
+                    "example": 8
+                },
+                "gmt": {
+                    "type": "integer",
+                    "example": 7
+                },
+                "hari": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Senin",
+                        "Selasa",
+                        "Rabu",
+                        "Kamis",
+                        "Jumat",
+                        "Sabtu",
+                        "Minggu"
+                    ]
+                },
+                "jam_keluar": {
+                    "type": "string",
+                    "example": "16:00"
+                },
+                "jam_masuk": {
+                    "type": "string",
+                    "example": "08:00"
+                },
+                "piket_tim": {
+                    "type": "string",
+                    "example": "Piket Z"
+                },
+                "shift": {
+                    "type": "integer",
+                    "example": 2
+                }
+            }
+        },
+        "controller.Karyawan": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "123456789"
+                },
+                "hari_kerja": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "Senin",
+                        "Selasa",
+                        "Rabu",
+                        "Kamis",
+                        "Jumat",
+                        "Sabtu",
+                        "Minggu"
+                    ]
+                },
+                "jabatan": {
+                    "type": "string",
+                    "example": "Anonymous"
+                },
+                "jam_kerja": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/controller.JamKerja"
+                    }
+                },
+                "nama": {
+                    "type": "string",
+                    "example": "Tes Swagger"
+                },
+                "phone_number": {
+                    "type": "string",
+                    "example": "08123456789"
+                }
+            }
+        },
+        "controller.Presensi": {
+            "type": "object",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "example": "123456789"
+                },
+                "biodata": {
+                    "$ref": "#/definitions/controller.Karyawan"
+                },
+                "checkin": {
+                    "type": "string",
+                    "example": "Masuk"
+                },
+                "datetime": {
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2024-09-01T00:00:00Z"
+                },
+                "latitude": {
+                    "type": "number",
+                    "example": 123.12
+                },
+                "location": {
+                    "type": "string",
+                    "example": "Bandung"
+                },
+                "longitude": {
+                    "type": "number",
+                    "example": 123.11
+                },
+                "phone_number": {
+                    "type": "string",
+                    "example": "08123456789"
+                }
+            }
+        }
+    }
 }`
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
